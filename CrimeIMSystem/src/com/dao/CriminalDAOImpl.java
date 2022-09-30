@@ -1,7 +1,5 @@
 package com.dao;
 
-
-
 import java.awt.image.DataBuffer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,9 +13,9 @@ import com.bean.Crime;
 import com.bean.PoliceArea;
 import com.exception.PoliceAreaException;
 import com.exception.CriminalException;
-//import com.masai.util.DBUtil;
+import com.util.DBUtil;
 
-public abstract class CriminalDAOImpl implements CriminalDAO{
+public class CriminalDAOImpl implements CriminalDAO{
 	
 
 		@Override
@@ -344,6 +342,12 @@ public abstract class CriminalDAOImpl implements CriminalDAO{
 		public boolean SPOfficer(String username, String password) {
 			
 			return true;
+		}
+
+		@Override
+		public boolean PoliceOfficer(String username, String password) {
+			// TODO Auto-generated method stub
+			return false;
 		}
 
 	
