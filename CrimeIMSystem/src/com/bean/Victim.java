@@ -2,52 +2,41 @@ package com.bean;
 
 public class Victim {
 
-		private String name;
-		private int age;
-		private String gender;
-		private String address;
-		
-		public Victim() {
-			
+		private int Victims_Id;
+		private String Victims_Name;
+
+		public int getVictims_Id() {
+			return Victims_Id;
 		}
-		
-		public Victim(String name, int age, String gender, String address) {
-			super();
-			this.name = name;
-			this.age = age;
-			this.gender = gender;
-			this.address = address;
+
+		public void setVictims_Id(int victims_Id) {
+			Victims_Id = victims_Id;
 		}
-		public String getName() {
-			return name;
+
+		public String getVictims_Name() {
+			return Victims_Name;
 		}
-		public void setName(String name) {
-			this.name = name;
+
+		public void setVictims_Name(String victims_Name) {
+			Victims_Name = victims_Name;
 		}
-		public int getAge() {
-			return age;
-		}
-		public void setAge(int age) {
-			this.age = age;
-		}
-		public String getGender() {
-			return gender;
-		}
-		public void setGender(String gender) {
-			this.gender = gender;
-		}
-		public String getAddress() {
-			return address;
-		}
-		public void setAddress(String address) {
-			this.address = address;
-		}
+
 		@Override
 		public String toString() {
-			return "Victim [name=" + name + ", age=" + age + ", gender=" + gender + ", address=" + address + "]";
+			return "Victims [Victims_Id=" + Victims_Id + ", Victims_Name=" + Victims_Name + "]";
 		}
-		
-		
+
+		public Victim() {
+			super();
+
+		}
+
+		public Victim(int victims_Id, String victims_Name) {
+			super();
+			Victims_Id = victims_Id;
+			Victims_Name = victims_Name;
+		}
+
 	
 
 
