@@ -11,6 +11,7 @@ import java.util.List;
 import com.bean.Criminal;
 import com.bean.Crime;
 import com.bean.PoliceArea;
+import com.bean.StationCrimeArea;
 import com.exception.PoliceAreaException;
 import com.exception.CriminalException;
 import com.util.DBUtil;
@@ -348,6 +349,18 @@ public class CriminalDAOImpl implements CriminalDAO{
 		public boolean PoliceOfficer(String username, String password) {
 			// TODO Auto-generated method stub
 			return false;
+		}
+
+		@Override
+		public Criminal getCriminalByCrimeType(String crimeType, String crimeDAte) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public List<StationCrimeArea> getSuspectsfromCrimeRegister(String suspects_Name) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 	

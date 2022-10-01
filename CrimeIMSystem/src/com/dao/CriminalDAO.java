@@ -5,6 +5,7 @@ import java.util.List;
 import com.bean.Criminal;
 import com.bean.Crime;
 import com.bean.PoliceArea;
+import com.bean.StationCrimeArea;
 import com.exception.PoliceAreaException;
 import com.exception.CriminalException;
 
@@ -31,6 +32,10 @@ public interface CriminalDAO {
 		public boolean PoliceOfficer(String username, String password);
 
 		boolean SPOfficer(String username, String password);
+
+		public Criminal getCriminalByCrimeType(String crimeType, String crimeDAte);
+
+		public List<StationCrimeArea> getSuspectsfromCrimeRegister(String suspects_Name);
 
 	
 

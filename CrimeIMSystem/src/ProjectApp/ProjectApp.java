@@ -38,7 +38,7 @@ public class ProjectApp {
 				System.out.println("Enter Password");
 
 				String password = in.next();
-				CriminalDao edao = new CriminalDaoImpl();
+				CriminalDAO edao = new CriminalDAOImpl();
 
 				if (edao.PoliceOfficer(username, password)) {
 					System.out.println("   Sucessfully Logged-In  : " + username);
@@ -107,7 +107,7 @@ public class ProjectApp {
 						// DeleteCriminalFromRegister.main(args);
 						break;
 					case 11:
-						App.exitApp();
+						ProjectApp.exitApp();
 						break;
 
 					default:
@@ -118,7 +118,7 @@ public class ProjectApp {
 					}
 				}
 			} catch (Exception e) {
-				App.error(e.getMessage());
+				ProjectApp.error(e.getMessage());
 
 			}
 
