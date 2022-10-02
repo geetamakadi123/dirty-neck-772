@@ -37,6 +37,8 @@ public interface CriminalDAO {
 
 		public List<StationCrimeArea> getSuspectsfromCrimeRegister(String suspects_Name);
 
+		public String GetNumberOfCases_Month();
+
 	
 
 

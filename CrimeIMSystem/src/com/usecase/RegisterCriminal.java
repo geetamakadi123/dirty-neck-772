@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.bean.Criminal;
 import com.dao.CriminalDAO;
 import com.dao.CriminalDAOImpl;
-
 public class RegisterCriminal {
 
 	public static void main(String[] args) {
@@ -14,7 +13,10 @@ public class RegisterCriminal {
 
 		System.out.println("Enter Criminal Name:");
 		String Criminal_Name = sc.next();
-		
+
+//		System.out.println("Enter Criminal Nick-Name:");
+//		String NickName = sc.next();
+
 		System.out.println("Enter Criminal Arrest Date :");
 		String Arrest_Date = sc.next();
 
@@ -45,7 +47,7 @@ public class RegisterCriminal {
 		System.out.println("Enter Criminal Crime Details:");
 		String CrimeDetails = sc.next();
 		
-		System.out.println("Enter Criminal Crime Details:");
+		System.out.println("Enter Criminal Crime Status:");
 		String Crime_Status = sc.next();
 		
 		CriminalDAO dao = new CriminalDAOImpl();

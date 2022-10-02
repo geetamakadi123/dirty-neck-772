@@ -363,6 +363,12 @@ public class CriminalDAOImpl implements CriminalDAO{
 			return null;
 		}
 
+		@Override
+		public String GetNumberOfCases_Month() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 	
 
 }
