@@ -1,0 +1,214 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 27
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| crimemanagement    |
+| db                 |
+| evaluation4        |
+| geetadb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| superfast          |
+| sys                |
+| web18sb101db       |
+| web19sb101db       |
++--------------------+
+11 rows in set (0.01 sec)
+
+mysql> use  crimemanagement;
+Database changed
+mysql> create table Crime(
+    ->
+    ->      CrimeType VARCHAR(45),
+    ->      CrimeDetails VARCHAR(45),
+    ->      Suspects_Name varchar(45),
+    ->      Victims_Name varchar(45),
+    ->      DateOfCrime VARCHAR(45),
+    ->      Place_Crime VARCHAR(45)
+    ->      );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc Crime;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| CrimeType     | varchar(45) | YES  |     | NULL    |       |
+| CrimeDetails  | varchar(45) | YES  |     | NULL    |       |
+| Suspects_Name | varchar(45) | YES  |     | NULL    |       |
+| Victims_Name  | varchar(45) | YES  |     | NULL    |       |
+| DateOfCrime   | varchar(45) | YES  |     | NULL    |       |
+| Place_Crime   | varchar(45) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> insert into Crime values('Robbery','Money-Heist','Mukesh','Inamdar','2020-05-16','Mumbai');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into Crime values('Theft','Painting-Theft','Elizabeth','MM Musium','2022-08-25','England');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Crime values('Sharper','Shrper,Thung','Zuber','Sitaram','2021-09-22','Nagpur');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Crime;
++-----------+----------------+---------------+--------------+-------------+-------------+
+| CrimeType | CrimeDetails   | Suspects_Name | Victims_Name | DateOfCrime | Place_Crime |
++-----------+----------------+---------------+--------------+-------------+-------------+
+| Robbery   | Money-Heist    | Mukesh        | Inamdar      | 2020-05-16  | Mumbai      |
+| Theft     | Painting-Theft | Elizabeth     | MM Musium    | 2022-08-25  | England     |
+| Sharper   | Shrper,Thung   | Zuber         | Sitaram      | 2021-09-22  | Nagpur      |
++-----------+----------------+---------------+--------------+-------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into Crime values('Theft','Money-Heist','Soman','Susu','2022-09-15','Rayagad');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> update Crime set Place_Crime="Rayagad" where Place_Crime="England";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Crime;
++-----------+----------------+---------------+--------------+-------------+-------------+
+| CrimeType | CrimeDetails   | Suspects_Name | Victims_Name | DateOfCrime | Place_Crime |
++-----------+----------------+---------------+--------------+-------------+-------------+
+| Robbery   | Money-Heist    | Mukesh        | Inamdar      | 2020-05-16  | Mumbai      |
+| Theft     | Painting-Theft | Elizabeth     | MM Musium    | 2022-08-25  | Rayagad     |
+| Sharper   | Shrper,Thung   | Zuber         | Sitaram      | 2021-09-22  | Nagpur      |
+| Theft     | Money-Heist    | Soman         | Susu         | 2022-09-15  | Rayagad     |
++-----------+----------------+---------------+--------------+-------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table Crime add Crime_status varchar(15);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update Crime set Crime_status = 'Solved' where Suspects_Name = 'Mukesh';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from crime;
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+| CrimeType | CrimeDetails   | Suspects_Name | Victims_Name | DateOfCrime | Place_Crime | Crime_status |
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+| Robbery   | Money-Heist    | Mukesh        | Inamdar      | 2020-05-16  | Mumbai      | Solved       |
+| Theft     | Painting-Theft | Elizabeth     | MM Musium    | 2022-08-25  | Rayagad     | NULL         |
+| Sharper   | Shrper,Thung   | Zuber         | Sitaram      | 2021-09-22  | Nagpur      | NULL         |
+| Theft     | Money-Heist    | Soman         | Susu         | 2022-09-15  | Rayagad     | NULL         |
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> update Crime set Crime_status = 'Unsolved' where Suspects_Name = 'Zuber';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Crime set Crime_status = 'Solved' where Suspects_Name = 'Soman';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from crime;
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+| CrimeType | CrimeDetails   | Suspects_Name | Victims_Name | DateOfCrime | Place_Crime | Crime_status |
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+| Robbery   | Money-Heist    | Mukesh        | Inamdar      | 2020-05-16  | Mumbai      | Solved       |
+| Theft     | Painting-Theft | Elizabeth     | MM Musium    | 2022-08-25  | Rayagad     | NULL         |
+| Sharper   | Shrper,Thung   | Zuber         | Sitaram      | 2021-09-22  | Nagpur      | Unsolved     |
+| Theft     | Money-Heist    | Soman         | Susu         | 2022-09-15  | Rayagad     | Solved       |
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from Crime where Suspects_Name="Mukesh";
++-----------+--------------+---------------+--------------+-------------+-------------+--------------+
+| CrimeType | CrimeDetails | Suspects_Name | Victims_Name | DateOfCrime | Place_Crime | Crime_status |
++-----------+--------------+---------------+--------------+-------------+-------------+--------------+
+| Robbery   | Money-Heist  | Mukesh        | Inamdar      | 2020-05-16  | Mumbai      | Solved       |
++-----------+--------------+---------------+--------------+-------------+-------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Crime_status, COUNT(Criminal_Id) FROM Criminal GROUP BY Crime_status HAVING COUNT(Criminal_Id)>0;
+ERROR 1146 (42S02): Table 'crimemanagement.criminal' doesn't exist
+mysql> SELECT Crime_status, COUNT(Crime_status) FROM Crime GROUP BY Crime_status HAVING COUNT(Solved);
+ERROR 1054 (42S22): Unknown column 'Solved' in 'having clause'
+mysql> create table PoliceOfficer(
+    ->      Username varchar(45),
+    ->      Password varchar(45)
+    ->      );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc policeofficer;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Username | varchar(45) | YES  |     | NULL    |       |
+| Password | varchar(45) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table PoliceOfficer(
+    ->
+    ->      Username varchar(45),
+    ->      Password varchar(45),
+    ->      StationId int,
+    ->      PoliceStation_Area varchar(45)
+    ->      );
+ERROR 1050 (42S01): Table 'policeofficer' already exists
+mysql> drop table policeofficer;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table PoliceOfficer(
+    ->
+    ->      Username varchar(45),
+    ->      Password varchar(45),
+    ->      StationId int,
+    ->      PoliceStation_Area varchar(45)
+    ->      );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into PoliceOfficer values('Makndar@gamil.com',727515,2,'East Mumbai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into PoliceOfficer values('Sardar@gamil.com',627515,2,'Central Mumbai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into PoliceOfficer values('Gajaan@gamil.com',527515,3,'South Mumbai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into PoliceOfficer values('Chaugule@gamil.com',427515,4,' Bangalore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from policeofficer;
++--------------------+----------+-----------+--------------------+
+| Username           | Password | StationId | PoliceStation_Area |
++--------------------+----------+-----------+--------------------+
+| Makndar@gamil.com  | 727515   |         2 | East Mumbai        |
+| Sardar@gamil.com   | 627515   |         2 | Central Mumbai     |
+| Gajaan@gamil.com   | 527515   |         3 | South Mumbai       |
+| Chaugule@gamil.com | 427515   |         4 |  Bangalore         |
++--------------------+----------+-----------+--------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from Crime;
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+| CrimeType | CrimeDetails   | Suspects_Name | Victims_Name | DateOfCrime | Place_Crime | Crime_status |
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+| Robbery   | Money-Heist    | Mukesh        | Inamdar      | 2020-05-16  | Mumbai      | Solved       |
+| Theft     | Painting-Theft | Elizabeth     | MM Musium    | 2022-08-25  | Rayagad     | NULL         |
+| Sharper   | Shrper,Thung   | Zuber         | Sitaram      | 2021-09-22  | Nagpur      | Unsolved     |
+| Theft     | Money-Heist    | Soman         | Susu         | 2022-09-15  | Rayagad     | Solved       |
++-----------+----------------+---------------+--------------+-------------+-------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql>
